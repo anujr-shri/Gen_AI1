@@ -91,7 +91,7 @@ def inference_llm(query: str, top_k: int = 3):
     query_embedding = get_query_embedding(query=context_query)  # type: ignore
     sematic_search_result = sematic_search(query_embedding=query_embedding, top_k=top_k)
     result = "\n\n".join(sematic_search_result[0])
-    logger.info(f"Extraxt The relevant knowledge from pdf {result}")
+    logger.info(f"Extraxt The relevant knowledge from pdf")
         
     # 3. Prompt context assembly
     llm_input = template.invoke(

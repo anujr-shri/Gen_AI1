@@ -97,5 +97,6 @@ def inference_llm(query: str, top_k: int = 3):
     history.append(HumanMessage(content=query))  # type: ignore
     response = model.invoke(llm_input)
     history.append(AIMessage(content=response.content))  # type: ignore
+    logger.info(f"Model Response is {response.content}")
 
     return response.content

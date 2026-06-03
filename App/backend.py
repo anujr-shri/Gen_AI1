@@ -10,7 +10,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 backend_logger = get_logger(__name__)
 
-pdf_dir = "uploaded_file"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+pdf_dir = os.path.join(BASE_DIR, "../uploaded_file")
 os.makedirs(pdf_dir, exist_ok=True)
 
 ALLOWED_EXTENSIONS = {

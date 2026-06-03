@@ -36,7 +36,7 @@ class QueryStructure(BaseModel):
     top_k: int = 3
 
 
-@app.get("/check")
+@app.get("/")
 def check():
     return {"Status": "Successful"}
 

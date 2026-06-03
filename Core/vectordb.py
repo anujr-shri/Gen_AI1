@@ -6,11 +6,22 @@ logger_instance = get_logger(__name__)
 collection_name = "pdf-qa-project"
 
 def get_collection():
+    """Initializes or connects to the local ChromaDB collection.
+
+    Using the ephemeral Client ensures an in-memory vector database 
+    instance is configured and ready for handling operational read/write actions.
+    """
     client = chromadb.Client()
     collection = client.get_or_create_collection(name="pdf-qa-project")
     return collection
 
 def store_embedding_vectordb(chunks, embeddings):
+    """Commits text segments, metadata, and generated vector arrays to ChromaDB.
+
+    Maps the structural attributes (unique generated IDs, position metadata, 
+    raw document strings, and dense embeddings) into the target collection 
+    to enable downstream vector index retrieval.
+    """
     collection = get_collection()
 
     collection.add(
@@ -23,6 +34,11 @@ def store_embedding_vectordb(chunks, embeddings):
     logger_instance.info("Sucessfully Stored The Embedding of document in vector db")
 
 def sematic_search(query_embedding, top_k):
+    """Queries the vector index for data blocks most similar to the user prompt.
+
+    Performs a vector distance comparison using the incoming query embedding array 
+    and returns the top matches from the stored text documents.
+    """
     collection = get_collection()
 
     results = collection.query(
@@ -33,6 +49,3 @@ def sematic_search(query_embedding, top_k):
     docs_result = [result for result in results['documents']] # type: ignore
 
     return docs_result
-
-
-

@@ -156,4 +156,4 @@ Gen_AI1/
 ## 🙋 Author
 
 **Anuj** — CSE Student at IIIT Bhopal  
-[GitHub](https://github.com/anujr_shri)
+[GitHub](https://github.com/anujr-shri)

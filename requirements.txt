@@ -6,6 +6,9 @@ langchain-core
 # vector strorage
 chromadb
 
+# pdf
+pypdf
+
 # Backend
 fastapi
 

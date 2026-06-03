@@ -14,7 +14,7 @@ st.set_page_config(
     page_icon="👋",
 )
 
-base_url = "http://127.0.0.1:8000"
+base_url = " https://gen-ai1.onrender.com"
 
 if "messages" not in st.session_state:
     st.session_state.messages = []

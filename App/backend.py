@@ -6,6 +6,7 @@ import tempfile
 import os
 from pydantic import BaseModel
 from utils.logger import get_logger
+from fastapi.middleware.cors import CORSMiddleware
 
 backend_logger = get_logger(__name__)
 
@@ -21,6 +22,13 @@ ALLOWED_EXTENSIONS = {
 app = FastAPI(
     title="rag system",
     description="Upload documents and query them using RAG"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://genai1-pdf-chatbot.streamlit.app/"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class QueryStructure(BaseModel):

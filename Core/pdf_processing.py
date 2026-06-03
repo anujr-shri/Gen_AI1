@@ -5,6 +5,11 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 logger_inst = get_logger(__name__)
 
 def loading_pdf(paths):
+    """Loads and extracts raw text data from multiple PDF file paths.
+
+    Iterates through a list of local file paths, initializes a PyPDFLoader 
+    for each document, and compiles all extracted pages into a single list.
+    """
     pdf_data = []
     for path in paths:
         loader = PyPDFLoader(path)
@@ -15,7 +20,12 @@ def loading_pdf(paths):
     return pdf_data
 
 def split_document(paths, chunk_size=1000, chunk_overlap=200):
+    """Chunks loaded document text into overlapping segments for embedding.
 
+    Uses a RecursiveCharacterTextSplitter to split the raw text into manageable 
+    token sizes. The chunk overlap ensures that semantic context isn't lost 
+    at the boundaries where sentences are broken up.
+    """
     docs_data = loading_pdf(paths)
     splitter = RecursiveCharacterTextSplitter(
         chunk_size = chunk_size,
@@ -24,4 +34,3 @@ def split_document(paths, chunk_size=1000, chunk_overlap=200):
     splitted_document = splitter.split_documents(docs_data)
     logger_inst.info(f" Split THe Document into {len(splitted_document)} chunks")
     return splitted_document
-    

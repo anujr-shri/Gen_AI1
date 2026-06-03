@@ -42,6 +42,12 @@ def check():
 
 @app.post("/upload", tags=["upload"])
 async def upload_file(files: List[UploadFile] = File(...)):
+    """Handles multi-file document ingestion for the RAG vector store.
+    This endpoint acts as the entry point for expanding the system's knowledge 
+    base. It restricts uploads to text and PDF formats to prevent chunking errors 
+    downstream, streams the files safely into disk storage using temporary files, 
+    and subsequently updates the embedding vectors via `build_pipeline`.
+    """
     uploaded = []
 
     for file in files:
@@ -70,7 +76,12 @@ async def upload_file(files: List[UploadFile] = File(...)):
 
 @app.post("/question")
 def answer_question(query: QueryStructure):
+    """Executes context-retrieval and LLM generation for a user query.
 
+    Passes the user's question to the inference engine. Note that `top_k` 
+    is exposed in the payload to allow the frontend to tune retrieval density 
+    depending on the depth of the source documents.
+    """
     answer = inference_llm(
         query=query.question,
         top_k=query.top_k

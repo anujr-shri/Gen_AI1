@@ -16,9 +16,11 @@ streamlit
 langchain-huggingface
 transformers
 huggingface-hub
-
+langchain-text-splitters
+langchain-community
 # Environment Variable Management
 python-dotenv
+pydantic
 
 # Machine Learning Utilities
 numpy

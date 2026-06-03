@@ -39,7 +39,7 @@ query_template = ChatPromptTemplate(
 )
 load_dotenv()
 
-def create_model(max_token: int = 256, temperature=0.1):
+def create_model(max_token: int = 1024, temperature=0.1):
     """Initializes HuggingFace endpoint wrapped in a Chat interface.
     Using ChatHuggingFace is necessary here so that LangChain can format
     the message history array properly into the system/user chat templates.

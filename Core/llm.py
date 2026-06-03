@@ -1,15 +1,29 @@
+"""Vector Embedding Generation Module.
+
+This module initializes the connection to Hugging Face embedding models 
+to convert both raw document text chunks and incoming user queries into 
+dense vector representations for downstream semantic search.
+"""
+
 from utils.logger import get_logger
 from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from dotenv import load_dotenv
 
+# Specific model selected for text embedding mapping
 EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
 
 load_dotenv()
 
 logger_inst = get_logger(__name__)
 
-def get_document_embedding(chunks):
 
+def get_document_embedding(chunks):
+    """Generates dense vector embeddings for a collection of text chunks.
+
+    Iterates through LangChain document structures, extracts their raw string 
+    contents, and batches them to the Hugging Face endpoint to generate bulk 
+    embeddings during data ingestion.
+    """
     model = HuggingFaceEndpointEmbeddings(
         model=EMBEDDING_MODEL
     )
@@ -19,8 +33,13 @@ def get_document_embedding(chunks):
 
     return document_embedding
 
-def get_query_embedding(query: str):
 
+def get_query_embedding(query: str):
+    """Generates a single vector embedding for the incoming user search query.
+
+    Uses the same underlying embedding model to project the user's refined query 
+    into the exact same vector space as the documents, enabling similarity lookups.
+    """
     model = HuggingFaceEndpointEmbeddings(
         model=EMBEDDING_MODEL
     )
@@ -29,8 +48,3 @@ def get_query_embedding(query: str):
     logger_inst.info("Successfully Embed The Query")
 
     return query_embedding
-
-
-
-
-

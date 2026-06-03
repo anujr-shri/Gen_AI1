@@ -7,6 +7,13 @@ from utils.logger import get_logger
 logger_inst = get_logger(__name__)
 
 def build_pipeline(path: list[str]):
+    """Executes the complete document ingestion and vector storage workflow.
+
+    This function ties together the data preparation steps: it extracts and 
+    chunks text from the given file paths, generates dense vector embeddings 
+    for those chunks, and commits both the raw text and embeddings to the 
+    vector database for future similarity search retrieval.
+    """
     chunks = split_document(path)
     if not chunks:
         raise ValueError(f"No chunks extracted from pdf")
@@ -17,5 +24,3 @@ def build_pipeline(path: list[str]):
 
     store_embedding_vectordb(chunks, embeddings)
     logger_inst.info("Pipeline complete — %d chunks stored", len(chunks))
-
-

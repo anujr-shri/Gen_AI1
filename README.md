@@ -140,7 +140,7 @@ Gen_AI1/
 
 | Variable | Description |
 |---|---|
-| `HUGGINGFACEHUB_API_TOKEN` | Your HuggingFace API token |
+| `HUGGINGFACEHUB_API_TOKEN` | HuggingFace API token |
 
 ---
 
@@ -156,4 +156,4 @@ Gen_AI1/
 ## 🙋 Author
 
 **Anuj** — CSE Student at IIIT Bhopal  
-[GitHub](https://github.com/your-username) · [LinkedIn](https://linkedin.com/in/your-profile)
+[GitHub](https://github.com/anujr_shri)

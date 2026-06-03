@@ -1,3 +1,9 @@
+"""Streamlit UI for the RAG Chatbot.
+
+Connects to the FastAPI backend to allow document uploads 
+and provide a conversational chat interface.
+"""
+
 import streamlit as st
 import requests
 

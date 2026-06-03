@@ -12,6 +12,7 @@ backend_logger = get_logger(__name__)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 pdf_dir = os.path.join(BASE_DIR, "../uploaded_file")
+backend_logger.info(f"file path is {pdf_dir}")
 os.makedirs(pdf_dir, exist_ok=True)
 
 ALLOWED_EXTENSIONS = {

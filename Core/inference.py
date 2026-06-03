@@ -84,7 +84,11 @@ def inference_llm(query: str, top_k: int = 3):
       4. Invoke the model and commit both query and output to memory state.
     """
     # 1. Resolve query dependencies
+    
     context_query = rewrite_query(query, history, model)
+    if not context_query or context_query.strip() == "":
+        context_query = query
+        logger.info("Query rewrite returned empty, using original query")
     logger.info(f"Debugg The User Query, new query is {context_query}")
 
     # 2. Vector database lookup

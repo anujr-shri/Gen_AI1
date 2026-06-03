@@ -3,6 +3,8 @@ uvicorn
 # LangChain Core
 langchain
 langchain-core
+# vector strorage
+chromadb
 
 # Backend
 fastapi

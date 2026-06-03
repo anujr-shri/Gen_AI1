@@ -1,3 +1,11 @@
+"""Streamlit Interface for RAG Inference.
+
+This module provides a lightweight conversational user interface that interacts 
+with the FastAPI backend. It captures user text queries, passes them to the 
+inference engine's query endpoint, and renders the generated LLM responses 
+in a clean, chat-like format.
+"""
+
 import streamlit as st
 import requests
 

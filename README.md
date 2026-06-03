@@ -66,13 +66,13 @@ You can get your token from [HuggingFace Settings](https://huggingface.co/settin
 ### Start the FastAPI backend
 
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn App.main:app --reload
 ```
 
 ### Start the Streamlit frontend
 
 ```bash
-streamlit run streamlit_app.py
+streamlit run App/home_page.py
 ```
 
 Then open [http://localhost:8501](http://localhost:8501) in your browser.
@@ -120,7 +120,7 @@ Gen_AI1/
 
 | Variable | Description |
 |---|---|
-| `HUGGINGFACEHUB_API_TOKEN` | Your HuggingFace API token |
+| `HUGGINGFACEHUB_API_TOKEN` | |
 
 ---
 
@@ -135,4 +135,4 @@ Gen_AI1/
 ## 🙋 Author
 
 **Anuj** — CSE Student at IIIT Bhopal  
-[GitHub](https://github.com/your-username) · [LinkedIn](https://linkedin.com/in/your-profile)
+[GitHub](https://github.com/anujr_shri) 

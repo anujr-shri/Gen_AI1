@@ -14,7 +14,7 @@ st.set_page_config(
 
 base_url = " https://gen-ai1.onrender.com"
 
-st.title("First LLM Application")
+st.title("AI PDF chatbot")
 
 uploaded_files = st.file_uploader("Choose Your .pdf file", type="pdf", accept_multiple_files=True)
 

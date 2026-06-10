@@ -11,7 +11,7 @@ logger = get_logger(__name__)
 history = []
 
 repo_id = "google/gemma-4-31B-it"
-rewriter_repo_id = "Qwen2.5-7B-Instruct"
+rewriter_repo_id = ""Qwen/Qwen2.5-7B-Instruct"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(BASE_DIR, "../prompt_query.txt"), "r") as file:

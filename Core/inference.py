@@ -61,14 +61,14 @@ def create_rewriter_model(max_token: int = 256, temperature=0.0):
 model = create_model()
 query_rewriter = create_rewriter_model()
 
-@traceable(name="query-rewrtting")
+@traceable(name="query_rewrtting", run_type="llm")
 def rewrite_query(query: str, history, query_resolver):
     """Refreshes and contextualizes the user query using conversation history and a rewriter model."""
     prompt = query_template.invoke({"history": history, "question": query})
     result = query_resolver.invoke(prompt)
     return result.content
 
-@traceable(name="llm-inference")
+@traceable(name="llm-inference", run_type="llm")
 def inference_llm(query: str, top_k: int = 3):
     """Executes the RAG pipeline by rewriting the query, searching the vector DB, and generating an answer."""
     context_query = rewrite_query(query, history, query_rewriter)

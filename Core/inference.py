@@ -46,7 +46,7 @@ def create_model(max_token: int = 1024, temperature=0.1):
     model = ChatHuggingFace(llm=endpoint, temperature=temperature)
     return model
 
-@traceable(name="query-rewrtting")
+
 def create_rewriter_model(max_token: int = 256, temperature=0.0):
     """Initializes and returns a dedicated ChatHuggingFace model for query rewriting."""
     endpoint = HuggingFaceEndpoint(
@@ -61,6 +61,7 @@ def create_rewriter_model(max_token: int = 256, temperature=0.0):
 model = create_model()
 query_rewriter = create_rewriter_model()
 
+@traceable(name="query-rewrtting")
 def rewrite_query(query: str, history, query_resolver):
     """Refreshes and contextualizes the user query using conversation history and a rewriter model."""
     prompt = query_template.invoke({"history": history, "question": query})

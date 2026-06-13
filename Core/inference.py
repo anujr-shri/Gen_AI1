@@ -68,7 +68,7 @@ def rewrite_query(query: str, history, query_resolver):
     result = query_resolver.invoke(prompt)
     return result.content
 
-@traceable(name="llm-inference", run_type="llm")
+@traceable(name="llm_inference", run_type="llm")
 def inference_llm(query: str, top_k: int = 3):
     """Executes the RAG pipeline by rewriting the query, searching the vector DB, and generating an answer."""
     context_query = rewrite_query(query, history, query_rewriter)

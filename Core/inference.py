@@ -5,6 +5,7 @@ from Core.vectordb import sematic_search
 from Core.llm import get_query_embedding
 from utils.logger import get_logger
 from dotenv import load_dotenv
+from langsmith import traceable
 import os
 
 logger = get_logger(__name__)
@@ -45,6 +46,7 @@ def create_model(max_token: int = 1024, temperature=0.1):
     model = ChatHuggingFace(llm=endpoint, temperature=temperature)
     return model
 
+@traceable(name="query-rewrtting")
 def create_rewriter_model(max_token: int = 256, temperature=0.0):
     """Initializes and returns a dedicated ChatHuggingFace model for query rewriting."""
     endpoint = HuggingFaceEndpoint(
@@ -65,6 +67,7 @@ def rewrite_query(query: str, history, query_resolver):
     result = query_resolver.invoke(prompt)
     return result.content
 
+@traceable(name="llm-inference")
 def inference_llm(query: str, top_k: int = 3):
     """Executes the RAG pipeline by rewriting the query, searching the vector DB, and generating an answer."""
     context_query = rewrite_query(query, history, query_rewriter)

@@ -1,9 +1,11 @@
 from utils.logger import get_logger
+from langsmith import traceable
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 logger_inst = get_logger(__name__)
 
+@traceable(name="document-loading")
 def loading_pdf(paths):
     """Loads and extracts raw text data from multiple PDF file paths.
     Iterates through a list of local file paths, initializes a PyPDFLoader
@@ -17,7 +19,8 @@ def loading_pdf(paths):
         logger_inst.info(f"Loaded {len(document)} pages from: {path}")
     logger_inst.info(f"Total pages loaded: {len(pdf_data)}")
     return pdf_data
-
+    
+@traceable(name="text-splitting")
 def split_document(paths, chunk_size=1000, chunk_overlap=200):
     """Chunks loaded document text into overlapping segments for embedding.
     Uses a RecursiveCharacterTextSplitter to split the raw text into manageable

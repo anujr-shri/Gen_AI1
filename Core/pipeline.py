@@ -3,9 +3,11 @@ from Core.vectordb import store_embedding_vectordb
 from Core.pdf_processing import split_document
 from Core.inference import inference_llm
 from utils.logger import get_logger
+from langsmith import traceable
 
 logger_inst = get_logger(__name__)
 
+@traceable("build_pipeline")
 def build_pipeline(path: list[str]):
     """Executes the complete document ingestion and vector storage workflow.
 

@@ -7,7 +7,7 @@ from langsmith import traceable
 
 logger_inst = get_logger(__name__)
 
-@traceable("build_pipeline")
+@traceable(name="build_pipeline", run_type="chain")
 def build_pipeline(path: list[str]):
     """Executes the complete document ingestion and vector storage workflow.
 

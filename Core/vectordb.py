@@ -16,7 +16,7 @@ def get_collection():
     collection = client.get_or_create_collection(name="pdf-qa-project")
     return collection
 
-@traceable("store_embedding_vectordb")
+@traceable(name="store_embedding_vectordb", run_type="retriver")
 def store_embedding_vectordb(chunks, embeddings):
     """Commits text segments, metadata, and generated vector arrays to ChromaDB.
 
@@ -35,7 +35,7 @@ def store_embedding_vectordb(chunks, embeddings):
 
     logger_instance.info("Sucessfully Stored The Embedding of document in vector db")
 
-@traceable("semantic-search")
+@traceable(name="semantic-search", run_type="retriver")
 def sematic_search(query_embedding, top_k):
     """Queries the vector index for data blocks most similar to the user prompt.
 

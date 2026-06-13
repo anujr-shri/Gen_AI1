@@ -6,6 +6,7 @@ dense vector representations for downstream semantic search.
 """
 
 from utils.logger import get_logger
+from langsmith import traceable
 from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from dotenv import load_dotenv
 
@@ -16,7 +17,7 @@ load_dotenv()
 
 logger_inst = get_logger(__name__)
 
-
+@traceable(name="get_document_embedding", run_type="embedding")
 def get_document_embedding(chunks):
     """Generates dense vector embeddings for a collection of text chunks.
 
@@ -33,7 +34,7 @@ def get_document_embedding(chunks):
 
     return document_embedding
 
-
+@traceable(name="get_query_embedding", run_type="embedding")
 def get_query_embedding(query: str):
     """Generates a single vector embedding for the incoming user search query.
 

@@ -1,3 +1,4 @@
+<img width="1889" height="834" alt="ai-pdf-chatbot" src="https://github.com/user-attachments/assets/3b09dbb8-7e09-4a4b-b855-364f9b21a9d0" />
 # 📄 AI PDF Bot
 
 An intelligent PDF question-answering chatbot powered by Google Gemma. Upload any PDF and ask questions — the bot reads, understands, and answers based on your document with full chat history support.

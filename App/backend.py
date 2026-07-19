@@ -44,12 +44,14 @@ def check():
 
 @app.post("/upload", tags=["upload"])
 async def upload_file(files: List[UploadFile] = File(...)):
+    
     """Handles multi-file document ingestion for the RAG vector store.
     This endpoint acts as the entry point for expanding the system's knowledge 
     base. It restricts uploads to text and PDF formats to prevent chunking errors 
     downstream, streams the files safely into disk storage using temporary files, 
     and subsequently updates the embedding vectors via `build_pipeline`.
     """
+    
     uploaded = []
 
     for file in files:

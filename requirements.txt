@@ -1,8 +1,10 @@
 # server
 uvicorn
 # LangChain Core
+
 langchain
 langchain-core
+
 # vector strorage
 chromadb
 
@@ -17,10 +19,7 @@ streamlit
 
 # Hugging Face Integration
 langchain-huggingface
-transformers
-huggingface-hub
-langchain-text-splitters
-langchain-community
+langchain-groq
 # Environment Variable Management
 python-dotenv
 pydantic

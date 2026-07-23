@@ -12,7 +12,7 @@ st.set_page_config(
    page_icon="🏠"
 )
 
-base_url = " https://gen-ai1.onrender.com"
+base_url = "http://127.0.0.1:8000"
 
 st.title("AI PDF chatbot")
 

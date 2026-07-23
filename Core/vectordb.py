@@ -68,7 +68,7 @@ def add_documents_vdb(docs):
         return
 
     try:
-        ids = [doc.metadata["id"] for doc in docs]
+        ids = [doc_id for doc_id in range(len(docs))]
     except KeyError as e:
         logger_instance.error(f"Document missing required metadata field 'id': {e}")
         raise

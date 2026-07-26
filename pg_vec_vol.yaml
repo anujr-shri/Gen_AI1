@@ -1,0 +1,13 @@
+services:
+  pgvector-container:
+    image: dhi.io/pgvector:0.8-pg18-debian-dev
+    environment:
+      - POSTGRES_USER=langchain
+      - POSTGRES_PASSWORD=langchain
+      - POSTGRES_DB=langchain
+    ports:
+      - 6024:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:

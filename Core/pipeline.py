@@ -7,7 +7,7 @@ logger = get_logger(__name__)
 
 
 @traceable(name="build_pipeline", run_type="chain")
-def build_pipeline(paths: list[str]) -> int:
+def build_pipeline(paths: list[str], testing: bool = False) -> int:
     """Ingest documents into the vector store.
 
     Splits each document into text chunks, then stores those chunks
